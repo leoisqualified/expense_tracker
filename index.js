@@ -2,8 +2,9 @@ import "express-async-errors";
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import errorHandler from "./handlers/errorHandlers.js";
+import errorHandler from "./middlewares/errorHandlers.js";
 import userRoutes from "./routes/userRoutes.js";
+import authHandler from "./middlewares/auth.js";
 
 // Load environment variables from .env file
 dotenv.config();

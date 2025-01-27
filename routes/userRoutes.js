@@ -13,6 +13,9 @@ userRoutes.post("/register", createUser);
 // Login a user
 userRoutes.post("/login", loginUser);
 
+// Protected Routes...
+app.use(authHandler); // auth middleware
+
 // get User dashboard
 userRoutes.get("/dashboard", userDashboard);
 
