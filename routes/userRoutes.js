@@ -1,9 +1,12 @@
 import express from "express";
 import {
   createUser,
+  forgotPassword,
   loginUser,
   userDashboard,
+  resetPassword,
 } from "../controllers/userController.js";
+import authHandler from "../middlewares/auth.js";
 
 const userRoutes = express.Router();
 
@@ -13,8 +16,12 @@ userRoutes.post("/register", createUser);
 // Login a user
 userRoutes.post("/login", loginUser);
 
-// Protected Routes...
-app.use(authHandler); // auth middleware
+// Forgot password
+userRoutes.post("/forgotpassword", forgotPassword);
+userRoutes.post("/resetpassword", resetPassword);
+
+// PROTECTED ROUTES...
+userRoutes.use(authHandler); // auth middleware
 
 // get User dashboard
 userRoutes.get("/dashboard", userDashboard);

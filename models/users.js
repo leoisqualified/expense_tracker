@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
     default: 0,
     required: [true, "Please provide a balance"],
   },
+  reset_code: {
+    type: Number,
+  },
 });
 
 const User = mongoose.model("User", userSchema);

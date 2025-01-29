@@ -1,7 +1,33 @@
 import mongoose from "mongoose";
 
-const transactionSchema = async (req, res) => {
-  const {} = req.body;
-};
+const transactionSchema = new mongoose.Schema(
+  {
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
 
-export default transactionSchema;
+    amount: {
+      type: Number,
+      required: true,
+    },
+
+    transaction_type: {
+      type: String,
+      required: true,
+      enum: ["income", "expense"],
+    },
+
+    remarks: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+const Transactions = mongoose.model("Transactions", transactionSchema);
+
+export default Transactions;
